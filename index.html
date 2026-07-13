@@ -678,6 +678,12 @@ async function exportTrackerRowCore() {
   const weighted = calcWeightedTotal(results);
   const anyAF = weighted.autofail;
 
+  // Determinar razón específica de autofail para el tracker
+  const afReasons = [];
+  if (state['m_6_3'] && state['m_6_3'].score === 0) afReasons.push('Plaga');
+  if (state['m_3_7'] && state['m_3_7'].score === 0) afReasons.push('Caducado');
+  const afValue = afReasons.length ? afReasons.join(' y ') : 'NO';
+
   function semLabel(pct, af) {
     if (af) return '⛔ Autofail';
     if (pct === null) return '—';
@@ -713,7 +719,7 @@ async function exportTrackerRowCore() {
   const regData = wsReg.addRow([null,meta.cocina||'',meta.ciudad||'',meta.fecha||'',meta.auditor||'',meta.trimestre||'',
     secPcts[0],secPcts[1],secPcts[2],secPcts[3],secPcts[4],secPcts[5],
     weighted.pct !== null ? weighted.pct / 100 : null,
-    semLabel(weighted.pct, anyAF), anyAF ? 'SÍ' : 'NO'
+    semLabel(weighted.pct, anyAF), afValue
   ]);
   styleData(regData);
   [7,8,9,10,11,12,13].forEach(i => { const c = regData.getCell(i); if (c.value !== null && c.value !== undefined) c.numFmt = '0%'; });
