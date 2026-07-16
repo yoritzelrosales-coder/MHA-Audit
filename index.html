@@ -548,7 +548,7 @@ function calcSection(key) {
     earned += s.score;
     if (c.autofail && s.score === 0) autofail = true;
   });
-  const pct = possible > 0 ? Math.round(earned / possible * 100) : null;
+  const pct = possible > 0 ? parseFloat((earned / possible * 100).toFixed(2)) : null;
   return { earned, possible, evaluated, total: scored.length, pct, autofail };
 }
 
@@ -562,7 +562,7 @@ function calcWeightedTotal(sectionResults) {
       wTotal += m.weight;
     }
   });
-  const pct = wTotal > 0 ? Math.round(wSum / wTotal * 100) : null;
+  const pct = wTotal > 0 ? parseFloat((wSum / wTotal * 100).toFixed(2)) : null;
   return { pct, autofail: anyAF };
 }
 
@@ -593,7 +593,7 @@ function updateScores() {
     const sem = semaforo(r.pct, r.autofail);
     // Section header badge
     const sc = document.getElementById('score-' + m.key);
-    if (sc) sc.textContent = r.pct !== null ? r.earned + '/' + r.possible + ' pts · ' + r.pct + '%' : '—';
+    if (sc) sc.textContent = r.pct !== null ? r.earned + '/' + r.possible + ' pts · ' + r.pct.toFixed(2) + '%' : '—';
     const s = document.getElementById('sem-' + m.key); if (s) { s.className = 'semaforo ' + sem.cls; s.textContent = sem.lbl; }
     // Progress bar
     const p = document.getElementById('prog-' + m.key);
@@ -602,7 +602,7 @@ function updateScores() {
     if (l) l.textContent = r.total > 0 ? r.evaluated + ' / ' + r.total : '—';
     // Summary cards
     const rs = document.getElementById('rs-' + m.key);
-    if (rs) rs.textContent = r.pct !== null ? r.pct + '%' : '—';
+    if (rs) rs.textContent = r.pct !== null ? r.pct.toFixed(2) + '%' : '—';
     const rss = document.getElementById('rs-' + m.key + '-sem');
     if (rss) rss.innerHTML = `<span class="semaforo ${sem.cls}">${sem.lbl}</span>`;
     const rpts = document.getElementById('rs-' + m.key + '-pts');
@@ -611,13 +611,13 @@ function updateScores() {
 
   // Global header
   const tsem = semaforo(weighted.pct, weighted.autofail);
-  document.getElementById('g-pct').textContent = weighted.pct !== null ? weighted.pct + '%' : '—';
+  document.getElementById('g-pct').textContent = weighted.pct !== null ? weighted.pct.toFixed(2) + '%' : '—';
   document.getElementById('g-pts').textContent = '— pts pond.';
   document.getElementById('g-sem').textContent = tsem.lbl;
   // Total card
-  const rt   = document.getElementById('rs-total');     if (rt)  rt.textContent  = weighted.pct !== null ? weighted.pct + '%' : '—';
+  const rt   = document.getElementById('rs-total');     if (rt)  rt.textContent  = weighted.pct !== null ? weighted.pct.toFixed(2) + '%' : '—';
   const rts  = document.getElementById('rs-total-sem'); if (rts) rts.innerHTML   = `<span class="semaforo ${tsem.cls}">${tsem.lbl}</span>`;
-  const rttp = document.getElementById('rs-total-pts'); if (rttp) rttp.textContent = weighted.pct !== null ? weighted.pct + '% ponderado' : '—';
+  const rttp = document.getElementById('rs-total-pts'); if (rttp) rttp.textContent = weighted.pct !== null ? weighted.pct.toFixed(2) + '% ponderado' : '—';
 }
 
 // ─── UI HELPERS ──────────────────────────────────────────────────────────────
@@ -895,7 +895,7 @@ function openReportCore() {
   const secCards = SECTION_META.map(m => {
     const r = results[m.key];
     const bs = semaforo(r.pct, r.autofail);
-    return `<div class="r-sc"><div class="n" style="color:${m.color}">${r.pct!==null?r.pct+'%':'—'}</div><div class="l" style="font-size:9px">${m.short}<span class="weight-chip">${m.weight}%</span></div><div class="pts-lbl">${r.earned}/${r.possible} pts</div><div class="s"><span class="semaforo ${bs.cls}">${bs.lbl}</span></div></div>`;
+    return `<div class="r-sc"><div class="n" style="color:${m.color}">${r.pct!==null?r.pct.toFixed(2)+'%':'—'}</div><div class="l" style="font-size:9px">${m.short}<span class="weight-chip">${m.weight}%</span></div><div class="pts-lbl">${r.earned}/${r.possible} pts</div><div class="s"><span class="semaforo ${bs.cls}">${bs.lbl}</span></div></div>`;
   }).join('');
 
   document.getElementById('modal-content').innerHTML = `
@@ -908,7 +908,7 @@ function openReportCore() {
     </div>
 
     <div class="r-scores" style="flex-wrap:wrap;">
-      <div class="r-sc" style="border-color:var(--brand)"><div class="n" style="color:${semColor(weighted.pct)}">${weighted.pct!==null?weighted.pct+'%':'—'}</div><div class="l">Total Ponderado</div><div class="s"><span class="semaforo ${tsem.cls}">${tsem.lbl}</span></div></div>
+      <div class="r-sc" style="border-color:var(--brand)"><div class="n" style="color:${semColor(weighted.pct)}">${weighted.pct!==null?weighted.pct.toFixed(2)+'%':'—'}</div><div class="l">Total Ponderado</div><div class="s"><span class="semaforo ${tsem.cls}">${tsem.lbl}</span></div></div>
       ${secCards}
     </div>
 
