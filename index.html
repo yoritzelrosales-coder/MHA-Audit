@@ -301,7 +301,10 @@ main{max-width:860px;margin:0 auto;padding:20px 16px 96px;}
       <div class="sc-card"><div class="num" style="color:#0891b2" id="rs-sec5">—</div><div class="pts-lbl" id="rs-sec5-pts">—</div><div class="lbl">Procesos</div><div class="semrow" id="rs-sec5-sem"><span class="semaforo sem-pending">—</span></div></div>
       <div class="sc-card"><div class="num" style="color:#b45309" id="rs-sec6">—</div><div class="pts-lbl" id="rs-sec6-pts">—</div><div class="lbl">Saneamiento</div><div class="semrow" id="rs-sec6-sem"><span class="semaforo sem-pending">—</span></div></div>
     </div>
-    <div style="padding:0 18px 14px;"><p style="font-size:11px;color:var(--gray-500);">🟢 Ejemplar ≥91% &nbsp;|&nbsp; 🟡 Aprobado 81–90% &nbsp;|&nbsp; 🟠 Aprobado Condicionado 71–80% &nbsp;|&nbsp; 🔴 No Aprobado ≤70% &nbsp;|&nbsp; ⛔ Autofail independiente del % &nbsp;|&nbsp; <strong>Puntaje ponderado:</strong> S1×15 + S2×15 + S3×17 + S4×15 + S5×20 + S6×18</p></div>
+    <div class="score-summary" style="grid-template-columns:1fr;padding-top:0;border-top:2px solid #fef08a;">
+      <div class="sc-card" style="background:linear-gradient(135deg,#fefce8,#fef9c3);border:1px solid #fbbf24;"><div class="num" style="color:#ca8a04;" id="rs-foodies">—</div><div class="pts-lbl" id="rs-foodies-pts">—</div><div class="lbl">⭐ Foodies · Buenas Prácticas Operativas</div><div class="semrow" id="rs-foodies-sem"><span class="semaforo sem-pending">Sin evaluar</span></div></div>
+    </div>
+    <div style="padding:0 18px 14px;"><p style="font-size:11px;color:var(--gray-500);">🟢 Ejemplar ≥91% &nbsp;|&nbsp; 🟡 Aprobado 81–90% &nbsp;|&nbsp; 🟠 Aprobado Condicionado 71–80% &nbsp;|&nbsp; 🔴 No Aprobado ≤70% &nbsp;|&nbsp; ⛔ Autofail independiente del % &nbsp;|&nbsp; <strong>Puntaje ponderado:</strong> S1×15 + S2×15 + S3×17 + S4×15 + S5×20 + S6×18 &nbsp;|&nbsp; ⭐ <strong>Foodies:</strong> 41 puntos 100% en manos del equipo operativo</p></div>
   </div>
 </div>
 
@@ -339,112 +342,112 @@ const SECTION_META = [
 const DEFS = {
   sec1: [
     {type:'subgroup', label:'🦟 Plagas'},
-    {id:'m_1_1', num:'1.1', type:'scored2', t:'No hay condiciones adicionales que promuevan la proliferación de plagas, tales como: maleza o hierbas, encharcamientos o acumulaciones de basura al exterior de las instalaciones ni presencia de animales domésticos, ni mascotas dentro de las áreas de producción o elaboración de los productos.', scored:true},
-    {id:'m_1_2', num:'1.2', type:'scored2', t:'Las puertas, accesos, ventanas de las áreas de producción o elaboración están provistas de protección para evitar la entrada de fauna nociva.', scored:true},
-    {type:'subgroup', label:'🧹 Limpieza'},
-    {id:'m_1_3', num:'1.3', type:'scored2', t:'Las instalaciones del establecimiento, incluidos techos, puertas, paredes, pisos, baños, cisternas, tinacos u otros depósitos de agua y mobiliario se encuentran limpias, incluyendo donde existan tuberías, conductos, rieles, vigas o cables que pasen por encima de algún producto sin envasar deben mantenerse limpias.', scored:true},
+    {id:'m_1_1', num:'1.1', type:'scored2', t:'No hay condiciones exteriores que promuevan la proliferación de plagas, maleza o hierbas, encharcamientos o acumulaciones de basura al exterior de las instalaciones ni presencia de animales domésticos, ni mascotas dentro de las áreas.', scored:true},
+    {id:'m_1_2', num:'1.2', type:'scored2', t:'Las puertas, accesos, ventanas y drenajes de las áreas de producción o elaboración están provistas de protección para evitar la entrada de fauna nociva.', scored:true},
     {type:'subgroup', label:'🏗️ Infraestructura, Equipos y Utensilios'},
-    {id:'m_1_4', num:'1.4', type:'scored2', t:'Las instalaciones del establecimiento, incluidos techos, puertas, paredes, pisos, baños, cisternas, tinacos u otros depósitos de agua y mobiliario se encuentran en buenas condiciones de mantenimiento, sin grietas o roturas; fugas, goteos, partes faltantes o arreglos improvisados; para cisternas o tinacos las paredes deben ser lisas y en caso de contar con respiradero, éste debe tener un filtro.', scored:true},
-    {id:'m_1_5', num:'1.5', type:'scored2', t:'La iluminación permite llevar a cabo la realización de las operaciones de manera higiénica, se cuenta con focos o lámparas funcionando. En las áreas donde los productos se encuentren sin envasar, los focos y lámparas están protegidos o son de material que impide su astillamiento.', scored:true},
-    {id:'m_1_6', num:'1.6', type:'scored2', t:'El drenaje cuenta con trampa contra olores, coladeras y/o canaletas con rejillas y/o malla mosquitera, no presentan estancamiento y están en buen estado. No hay reflujo de agua del drenaje hacia las áreas del establecimiento. Se cuenta con trampa para grasa en buen estado y comprobante de servicio de mantenimiento.', scored:true},
-    {id:'m_1_7', num:'1.7', type:'scored2', t:'Se evidencia la señalización de áreas de acuerdo al proceso productivo y la circulación de personal, servicios sanitarios y demás áreas.', scored:true},
-    {id:'m_1_11', num:'1.11', type:'scored2', t:'La ventilación evita el calor, condensación de vapor, acumulación de humo y polvo. Hay comprobantes de servicio a campanas de extracción.', scored:true},
-    {id:'m_1_12', num:'1.12', type:'scored2', t:'El área de salón se encuentra en buenas condiciones físicas, en techos, paredes y pisos. Mesas y sillas no presentan desperfectos ni dan mala imagen.', scored:true},
+    {id:'m_1_4', num:'1.4', type:'scored2', t:'Las instalaciones del establecimiento, incluidos techos, puertas, paredes, pisos, baños, cisternas, tinacos u otros depósitos de agua y mobiliario se encuentran en buenas condiciones de mantenimiento o en su caso existen ticketes abiertos con fechas de mantenimiento correctivo previstas.', scored:true},
+    {id:'m_1_5', num:'1.5', type:'scored2', t:'La iluminación permite llevar a cabo la realización de las operaciones de manera higiénica.', scored:true},
+    {id:'m_1_6', num:'1.6', type:'scored2', t:'Existen suficientes drenajes en las áreas de proceso, estas tienen capacidad suficiente, no presentan reflujo, estancamientos, basura ni olores.', scored:true},
+    {id:'m_1_7', num:'1.7', type:'scored2', t:'Se cuenta con señalización básica de rutas de evacuación, extintores, áreas y elementos peligrosos o potencialmente contaminantes.', scored:true},
+    {id:'m_1_11', num:'1.11', type:'scored2', t:'La ventilación evita el calor, condensación de vapor, acumulación de humo y polvo.', scored:true},
+    {id:'m_1_12', num:'1.12', type:'scored2', t:'Las instalaciones eléctricas, hídricas y de gas son adecuadas y seguras. Están limpias y recientemente pintadas con colores diferentes que las diferencíen entre sí.', scored:true},
     {type:'subgroup', label:'🚿 Abasto'},
-    {id:'m_1_8', num:'1.8', type:'scored2', t:'Se cuenta con al menos una estación de lavado y desinfección de manos provista de agua, jabón o detergente y desinfectante, toallas desechables o dispositivo de secado por aire caliente y depósito de basura con bolsa, tapa oscilante o accionada por pedal e identificación del tipo de basura y ayuda visual.', scored:true},
-    {id:'m_1_9', num:'1.9', type:'scored2', t:'Los sanitarios no tienen comunicación ni ventilación directa hacia el área de producción o elaboración. Están provistos con agua potable, retretes, lavabos, papel higiénico, jabón o detergente, toallas desechables o secador de aire de accionamiento automático y recipiente para basura con bolsa, tapa oscilante o accionada por pedal e identificación del tipo de basura; cuentan con rótulos o ilustraciones que promuevan la higiene personal.', scored:true},
+    {id:'m_1_8', num:'1.8', type:'scored2', t:'Se cuenta con estación de lavado y desinfección de manos provista de agua, jabón y desinfectante o se tienen tales adaptaciones en la tarja lavaloza.', scored:true},
+    {id:'m_1_9', num:'1.9', type:'scored2', t:'Los sanitarios cuentan con ventilación o extracción la cual no tienen comunicación directa hacia el área de producción o elaboración.', scored:true},
     {type:'subgroup', label:'👤 Salud e Higiene Personal'},
-    {id:'m_1_10', num:'1.10', type:'scored2', t:'La ropa y objetos personales deberán guardarse fuera de las áreas de producción o elaboración. El alimento y bebidas del personal se encuentra resguardado en un área específica señalizada, dentro de contenedores, vasos o botellas cerrados.', scored:true},
+    {id:'m_1_10', num:'1.10', type:'scored2', t:'Se cuenta con área de casilleros, mesas y sillas suficientes y en buen estado destinadas para el personal.', scored:true},
+    {type:'subgroup', label:'🧹 Limpieza'},
+    {id:'m_1_3', num:'1.3', type:'scored2', t:'Las instalaciones del establecimiento, incluidos techos, puertas, paredes, pisos, baños, cisternas, tinacos u otros depósitos de agua y mobiliario se encuentran limpias.', scored:true},
   ],
   sec2: [
     {type:'subgroup', label:'🧹 Limpieza'},
-    {id:'m_2_1', num:'2.1', type:'scored2', t:'El equipo, utensilios y materiales que se emplean en la producción o elaboración de alimentos se encuentran limpios y desinfectados, son de material liso, resistente y lavable.', scored:true},
     {id:'m_2_4', num:'2.4', type:'scored2', t:'Hay ausencia de lugares no higiénicos, con fallas en aseo o de difícil acceso para realizar el mismo.', scored:true},
-    {id:'m_2_5', num:'2.5', type:'scored2', t:'En las áreas de servicio y comedor las superficies de las mesas se limpian y desinfectan al final de la jornada.', scored:true},
+    {id:'m_2_3', num:'2.3', type:'scored2', t:'No hay equipos en desuso en cocina. De haberlos, se encuentran limpios y se tiene fecha prevista de salida.', scored:true},
+    {id:'m_2_1', num:'2.1', type:'scored2', t:'Los equipos se encuentran en buen estado sin fallas o en su caso, ticketes de mantenimiento abiertos y con fechas de mantenimiento correctivo previstas.', scored:true},
+    {id:'m_2_5', num:'2.5', type:'scored2', t:'Las superficies, mesas y equipos se encuentran limpios y desinfectados.', scored:true, foco:true},
     {type:'subgroup', label:'🏗️ Infraestructura, Equipos y Utensilios'},
-    {id:'m_2_3', num:'2.3', type:'scored2', t:'El establecimiento periódicamente debe dar salida a productos y materiales inútiles, obsoletos o fuera de especificaciones. Si los hay deben estar identificados como fuera de uso, en un área específica y mantenerse ordenados y limpios hasta su retiro.', scored:true},
     {id:'m_2_6', num:'2.6', type:'scored2', t:'Los equipos de refrigeración y/o congelación están provistos de termómetros o dispositivos para el registro de temperatura funcionando y en un lugar accesible para su monitoreo.', scored:true},
-    {id:'m_2_7', num:'2.7', type:'scored2', t:'Los equipos de refrigeración y/o congelación no presentan acumulación de agua en pisos o gabinetes.', scored:true},
-    {id:'m_2_8', num:'2.8', type:'scored2', t:'Los equipos de refrigeración mantienen una temperatura de aire máxima de 4 °C al igual que el alimento resguardado en ellos, se cuenta con registro. Alimentos que deben estar almacenados a temperatura de refrigeración no se mantienen expuestos a temperatura ambiente o fuentes de calor.', scored:true},
-    {id:'m_2_9', num:'2.9', type:'scored2', t:'Los equipos de congelación se mantienen a una temperatura de aire mínima de -18°C, al igual que el alimento resguardado en ellos, se cuenta con registro. Alimentos que deben estar almacenados a temperatura de congelación no se mantienen expuestos a temperatura ambiente o fuentes de calor.', scored:true},
-    {id:'m_2_10', num:'2.10', type:'scored2', t:'El equipo, utensilios y materiales que se emplean en la producción, elaboración y almacenamiento de alimentos o bebidas se encuentran en buen estado, funcionando correctamente. Los equipos no tienen elementos o accesorios que puedan generar riesgos de contaminación física hacia el producto.', scored:true},
-    {id:'m_2_11', num:'2.11', type:'scored2', t:'Los lubricantes utilizados en equipos o partes que están en contacto directo con materias primas, envase primario, producto en proceso o terminado sin envasar son de grado alimenticio.', scored:true},
-    {id:'m_2_12', num:'2.12', type:'scored2', t:'Programa de mantenimiento para servicios que se hacen de manera calendarizada (igualas) o por evento.', scored:true},
+    {id:'m_2_7', num:'2.7', type:'scored2', t:'Se observa al interior de los equipos el uso de retenes para descongelación y no hay escurrimientos ni encharcamientos.', scored:true, foco:true},
+    {id:'m_2_8', num:'2.8', type:'scored2', t:'Los equipos de refrigeración mantienen una temperatura 0 a 4°C y se cuenta con el formato de Temperaturas de Refrigeración actualizado.', scored:true, foco:true},
+    {id:'m_2_9', num:'2.9', type:'scored2', t:'Los equipos de congelación se mantienen a una temperatura de -18°C y se cuenta con el formato de Temperaturas de Congelación actualizado.', scored:true, foco:true},
+    {id:'m_2_10', num:'2.10', type:'scored2', t:'Las mesas, estantes, espigueros y otros muebles de cocina se encuentran en buen estado o en su caso se cuenta con tickets de mantenimiento abiertos con fechas de mantenimiento correctivo previstas.', scored:true},
+    {id:'m_2_11', num:'2.11', type:'scored2', t:'Todos los químicos presentes durante la operación (sanitizantes, desinfectantes, desengrasantes o jabones) se encuentran en contenedores adecuados, debidamente etiquetados y en un sitio seguro: retenes, atomizadores y/o dispensadores.', scored:true, foco:true},
+    {id:'m_2_12', num:'2.12', type:'scored2', t:'Se cuenta con el formato de mantenimientos correctivos/preventivos disponible y la información contenida es corroborable.', scored:true, foco:true},
   ],
   sec3: [
     {type:'subgroup', label:'🌡️ Temperaturas'},
-    {id:'m_3_2', num:'3.2', type:'scored2', t:'Se cuenta con control y registro de temperaturas de materias primas en recepción. La temperatura de recepción para productos refrigerados es de máximo 4°C y congelados mínimo de -18°C.', scored:true},
+    {id:'m_3_2', num:'3.2', type:'scored2', t:'Se valida al recibo que la materia prima venga con la temperatura adecuada, de manera que no se observan síntomas de pérdida de cadena de frío o recongelación.', scored:true, foco:true},
     {type:'subgroup', label:'🥩 Calidad de Alimentos'},
-    {id:'m_3_1', num:'3.1', type:'scored2', t:'La recepción de materias primas se lleva a cabo en condiciones que evitan su contaminación, proliferación de microorganismos y plagas, alteración y daños físicos.', scored:true},
-    {id:'m_3_3', num:'3.3', type:'scored2', t:'Los productos que no cumplen con las especificaciones (rechazados) son identificados y separados del resto: empaques con roturas, latas con golpes, abolladuras, oxidación, abombamiento; productos con caducidades vencidas o ilegibles; productos con coloración, olor o sabor distinto al normal; productos con signos de descongelación; huevo sucio en exceso o roto. Se cuenta con registro.', scored:true},
-    {id:'m_3_4', num:'3.4', type:'scored2', t:'Las materias primas, alimentos o bebidas se resguardan de tal forma que se permite la circulación de aire (si es refrigerado/congelado) y se almacenan de acuerdo a la jerarquía de los alimentos.', scored:true},
-    {id:'m_3_7', num:'3.7', type:'scored2', t:'Materias primas, alimentos y bebidas no presentan signos de descomposición: presencia de moho o lama, mal olor o coloración no propia del producto que indique deterioro y pérdida de inocuidad.', scored:true, autofail:true, afLabel:'🥩 Caducos / Descomposición'},
-    {id:'m_3_8', num:'3.8', type:'scored2', t:'Las materias primas, alimentos o bebidas se almacenan respetando el sistema FEFO (lo primero que caduca es lo primero que se usa). Las materias primas y alimentos ostentan etiqueta de identificación con nombre del producto y fecha de caducidad vigente.', scored:true},
-    {id:'m_3_9', num:'3.9', type:'scored2', t:'Se utilizan recipientes o utensilios específicos o desechables para probar la sazón de los alimentos o bebidas.', scored:true},
-    {id:'m_3_10', num:'3.10', type:'scored2', t:'No se tocan con los dedos las partes de vasos, contenedores, platos, utensilios desechables que estarán en contacto con alimentos, bebidas o con la boca del cliente.', scored:true},
+    {id:'m_3_1', num:'3.1', type:'scored2', t:'Se cuenta con área de recibo, mesa, tarima o taras de arrastre destinadas para tal función.', scored:true, foco:true},
+    {id:'m_3_3', num:'3.3', type:'scored2', t:'Se tiene acceso al formulario en línea para Quejas de CP y canal de comunicación para quejas de proveedor directo.', scored:true, foco:true},
+    {id:'m_3_4', num:'3.4', type:'scored2', t:'Refrigeradores, congeladores y líneas no están saturados; se permite la circulación de aire y se almacena de acuerdo a la jerarquía de los alimentos.', scored:true, foco:true},
+    {id:'m_3_7', num:'3.7', type:'scored2', t:'Materias primas, alimentos y bebidas no presentan signos de descomposición: presencia de moho o lama, mal olor o coloración no propia del producto que indique deterioro y pérdida de inocuidad.', scored:true, foco:true, autofail:true, afLabel:'🥩 Caducos / Descomposición'},
+    {id:'m_3_8', num:'3.8', type:'scored2', t:'Las materias primas, alimentos o bebidas se almacenan con la rotación adecuada PEPS. El producto se rotula y abastece respetando las FEFO en las líneas.', scored:true, foco:true},
+    {id:'m_3_9', num:'3.9', type:'scored2', t:'El personal conoce el procedimiento para realizar adecuadamente las pruebas de calidad diarias al producto, parte del RTO rutinario.', scored:true, foco:true},
+    {id:'m_3_10', num:'3.10', type:'scored2', t:'No se tocan con los dedos las partes de vasos, contenedores, platos o utensilios desechables que estarán en contacto con alimentos, bebidas o con la boca del cliente.', scored:true, foco:true},
     {type:'subgroup', label:'🧹 Limpieza'},
-    {id:'m_3_5', num:'3.5', type:'scored2', t:'Las materias primas y/o productos se colocan en mesas, estibas, tarimas, anaqueles, entrepaños que están limpias y evitan su contaminación, separándolos del piso al menos 15 cm.', scored:true},
+    {id:'m_3_5', num:'3.5', type:'scored2', t:'Las materias primas y/o productos se colocan en mesas, estibas, tarimas, anaqueles, entrepaños que están limpios y evitan su contaminación, separándolos del piso al menos 15 cm.', scored:true, foco:true},
     {id:'m_3_6', num:'3.6', type:'scored2', t:'El equipo mayor está instalado con el espacio suficiente que permite su limpieza y desinfección.', scored:true},
   ],
   sec4: [
     {type:'subgroup', label:'🧼 Salud e Higiene Personal'},
-    {id:'m_4_1', num:'4.1', type:'scored2', t:'El personal se presenta aseado al área de trabajo, con uniforme, ropa y calzado limpios y completos. Mantienen una óptima limpieza e higiene personal durante la jornada laboral.', scored:true},
-    {id:'m_4_2', num:'4.2', type:'scored2', t:'Si se emplean guantes, éstos deben mantenerse limpios e íntegros. El uso de guantes no exime el lavado de las manos antes de su colocación.', scored:true},
-    {id:'m_4_3', num:'4.3', type:'scored2', t:'El personal en contacto con alimentos y bebidas tiene el cabello corto o recogido, utiliza protección que cubre totalmente el cabello. No tiene barba ni bigote, tiene las uñas recortadas, sin esmalte y no usa joyas ni algún otro tipo de desprendible, ni reloj, pulseras o collares.', scored:true},
-    {id:'m_4_4', num:'4.4', type:'scored2', t:'El personal en contacto directo con materias primas, envases, desechables, alimentos o bebidas, se lava las manos cada vez que sea necesario y en los momentos correctos (llegada a la cocina, después de ir al baño, sacar basura, recoger algo del piso) de acuerdo con el procedimiento establecido.', scored:true},
-    {id:'m_4_5', num:'4.5', type:'scored2', t:'El personal que trabaja en producción o elaboración no presenta signos como: tos frecuente, secreción nasal, diarrea, vómito, fiebre, ictericia o heridas en áreas corporales que entran en contacto directo o indirecto con las materias primas, alimentos o bebidas.', scored:true},
-    {id:'m_4_6', num:'4.6', type:'scored2', t:'Se evidencian prácticas higiénicas adecuadas: no existe evidencia de que el personal come, bebe, masca chicle, escupe, tose, estornuda y/o usa el celular mientras manipula ingredientes o alimentos, ni fuma dentro de las instalaciones. Son verificadas periódicamente con registros y planes de acción.', scored:true},
-    {id:'m_4_8', num:'4.8', type:'scored2', t:'Los visitantes cumplen con las normas de higiene y protección exigidas dentro de la zona de preparación de alimentos: gorro, uniforme y otras exigidas.', scored:true},
+    {id:'m_4_1', num:'4.1', type:'scored2', t:'El personal se presenta aseado al área de trabajo, con uniforme, ropa y calzado limpios y completos. Mantienen una óptima limpieza e higiene personal durante la jornada laboral.', scored:true, foco:true},
+    {id:'m_4_2', num:'4.2', type:'scored2', t:'Si se emplean guantes, éstos deben mantenerse limpios e íntegros. El uso de guantes no exime el lavado de las manos; durante este se revisa la integridad de los guantes.', scored:true, foco:true},
+    {id:'m_4_3', num:'4.3', type:'scored2', t:'El personal en contacto con alimentos y bebidas tiene el cabello corto o recogido y utiliza protección que cubre totalmente el cabello. No tiene barba ni bigote; tiene las uñas recortadas, sin esmalte, y no usa joyas, audífonos, accesorios ni piercings.', scored:true, foco:true},
+    {id:'m_4_4', num:'4.4', type:'scored2', t:'El personal en contacto directo con materias primas se lava las manos cada vez que sea necesario y en los momentos correctos, de acuerdo con el procedimiento establecido.', scored:true, foco:true},
+    {id:'m_4_5', num:'4.5', type:'scored2', t:'El personal que trabaja en producción o elaboración no presenta síntomas como tos o estornudos frecuentes, escurrimiento nasal ni heridas expuestas. De presentarse algún síntoma respiratorio esporádico, se aplica el estornudo de etiqueta y en caso de agravarse se notifica al encargado.', scored:true, foco:true},
+    {id:'m_4_6', num:'4.6', type:'scored2', t:'Se evidencian prácticas higiénicas adecuadas: no existe evidencia de que el personal come, bebe, masca chicle, escupe, tose, estornuda y/o usa el celular mientras manipula ingredientes o alimentos, ni fuma dentro de las instalaciones.', scored:true, foco:true},
+    {id:'m_4_8', num:'4.8', type:'scored2', t:'Los visitantes cumplen con las normas de higiene y protección exigidas dentro de la zona de preparación de alimentos: gorro, uniforme y otras exigidas.', scored:true, foco:true},
     {type:'subgroup', label:'📚 Capacitación y Documentación'},
-    {id:'m_4_7', num:'4.7', type:'scored2', t:'Existe un programa de capacitación continuo y permanente documentado con enfoque en educación sanitaria. Hay evidencia de capacitación general en buenas prácticas de higiene y manufactura por lo menos una vez al año.', scored:true},
+    {id:'m_4_7', num:'4.7', type:'scored2', t:'Se cuenta con acceso a la plataforma digital de capacitación. El personal con antigüedad mayor a un mes cuenta con todos sus cursos de la categoría de MHA resueltos con calificación mayor a 80.', scored:true, foco:true},
   ],
   sec5: [
     {type:'subgroup', label:'🥩 Calidad de Alimentos'},
-    {id:'m_5_1', num:'5.1', type:'scored2', t:'Los envases, desechables, recipientes, contenedores y utensilios en contacto directo con alimentos se almacenan protegidos contra polvo, lluvia, fauna nociva y materia extraña. Las materias primas, alimentos o bebidas deben mantenerse en envases o contenedores cerrados para evitar contaminación.', scored:true},
-    {id:'m_5_4', num:'5.4', type:'scored2', t:'Se evita la contaminación cruzada entre materia prima, producto semi elaborado y producto terminado durante su almacenamiento y manipulación; se mantiene lejos de fuentes de contaminación directa como sifones, residuos sólidos, baños o zonas externas.', scored:true},
-    {id:'m_5_7', num:'5.7', type:'scored2', t:'Materias primas, alimentos o bebidas no presentan objetos ajenos como insectos, tornillos, metales, uñas, espinas, pilas u otros; ni olor o sabor a cloro, solventes o de otro tipo, que puedan representar un riesgo a la salud del cliente o la imagen de la empresa y las marcas.', scored:true},
-    {id:'m_5_8', num:'5.8', type:'scored2', t:'Se inspeccionan o clasifican las materias primas e insumos antes de la producción o elaboración del alimento o bebida.', scored:true},
+    {id:'m_5_1', num:'5.1', type:'scored2', t:'Los empaques, envases, desechables, recipientes y contenedores en contacto directo con alimentos se almacenan protegidos contra polvo, lluvia, fauna nociva y materia extraña.', scored:true, foco:true},
+    {id:'m_5_4', num:'5.4', type:'scored2', t:'Las líneas se encuentran limpias y ordenadas; no se observa contaminación cruzada entre alimentos, los insertos están limpios, tapados y rotulados y no hay fechas atrasadas.', scored:true, foco:true},
+    {id:'m_5_7', num:'5.7', type:'scored2', t:'La materia prima cruda, alimentos en proceso y productos terminados se almacenan separados o diferenciados y señalizados de manera que no sean fuente de contaminación cruzada.', scored:true, foco:true},
+    {id:'m_5_8', num:'5.8', type:'scored2', t:'La materia prima parcialmente utilizada, el alimento en proceso de producción y el producto terminado se encuentran limpios, cerrados o sellados y rotulados, almacenados a temperatura adecuada.', scored:true, foco:true},
     {type:'subgroup', label:'🧹 Limpieza'},
-    {id:'m_5_2', num:'5.2', type:'scored2', t:'FRUVER se lava y desinfecta previo a su uso de acuerdo con el procedimiento aprobado y respetando los pasos establecidos. Se manipulan los alimentos de tal forma que se evita su contaminación después de su desinfección.', scored:true},
+    {id:'m_5_2', num:'5.2', type:'scored2', t:'Se cuenta con señalética adecuada para el correcto procedimiento de lavado, enjuagado y desinfección de FRUVER, incluyendo las dosis autorizadas. Todos los miembros del equipo de cocina han sido capacitados en estos procesos.', scored:true},
     {type:'subgroup', label:'🌡️ Temperaturas'},
-    {id:'m_5_5', num:'5.5', type:'scored2', t:'En las barras de servicio los alimentos calientes se mantienen a una temperatura mayor o igual a 60 °C, se cuenta con registros.', scored:true},
-    {id:'m_5_9', num:'5.9', type:'scored2', t:'En las barras de servicio los alimentos fríos se mantienen a una temperatura máxima de 4 °C, se cuenta con registros.', scored:true},
-    {id:'m_5_10', num:'5.10', type:'scored2', t:'Durante la cocción la temperatura mínima interna debe ser: pescado, carne de res en trozo y huevo para consumo inmediato 63°C; carne de cerdo en trozo, carnes molidas, carnes inyectadas y huevo en mantenimiento caliente 68°C; embutidos, rellenos y carne de aves 74°C por 15 segundos. Se cuenta con registros.', scored:true},
-    {id:'m_5_11', num:'5.11', type:'scored2', t:'Los alimentos preparados que se recalientan alcanzan una temperatura de al menos 74 °C por 15 segundos.', scored:true},
-    {id:'m_5_12', num:'5.12', type:'scored2', t:'La descongelación de los alimentos se realiza por refrigeración, una vez descongelados no se recongelan.', scored:true},
-    {id:'m_5_13', num:'5.13', type:'scored2', t:'Se cuenta con al menos 1 termómetro para medición de temperatura interna de alimentos, limpio y funcional. Se calibra o verifica por método de agua y hielo.', scored:true},
+    {id:'m_5_5', num:'5.5', type:'scored2', t:'En baño maría, los alimentos calientes se mantienen a una temperatura mayor o igual a 60°C; se cuenta con el Formato de Temperaturas de Cocción actualizado.', scored:true, foco:true},
+    {id:'m_5_9', num:'5.9', type:'scored2', t:'En las líneas refrigeradas, los alimentos fríos se mantienen a una temperatura máxima de 4°C, con los registros correspondientes en el Formato de Temperaturas de Refrigeración.', scored:true, foco:true},
+    {id:'m_5_10', num:'5.10', type:'scored2', t:'Se tienen registros actualizados en Formato de Temperaturas de Cocción: (Pescado, carne de res en trozo y huevo para consumo inmediato 63°C); (Carne de cerdo en trozo, carnes molidas, carnes inyectadas y huevo en mantenimiento caliente 68°C); (Embutidos, rellenos y carne de aves 74°C por 15 segundos).', scored:true, foco:true},
+    {id:'m_5_11', num:'5.11', type:'scored2', t:'Los alimentos preparados que se recalientan alcanzan una temperatura de al menos 74°C por 15 segundos y se tienen registros actualizados en Formato de Temperaturas de Cocción.', scored:true, foco:true},
+    {id:'m_5_12', num:'5.12', type:'scored2', t:'La descongelación de los alimentos se realiza por refrigeración; una vez descongelados no se recongelan.', scored:true, foco:true},
+    {id:'m_5_13', num:'5.13', type:'scored2', t:'Se cuenta con al menos 1 termómetro para medición de temperatura interna de alimentos, limpio y funcional. El personal conoce el procedimiento para calibrar o verificar por método de agua y hielo.', scored:true},
     {type:'subgroup', label:'📚 Capacitación y Documentación'},
-    {id:'m_5_3', num:'5.3', type:'scored2', t:'El personal cuenta con conocimiento claro sobre el canal de quejas internas.', scored:true},
+    {id:'m_5_3', num:'5.3', type:'scored2', t:'El personal de cocina tiene acceso al canal de comunicación interna de MHA y conoce el uso apropiado de este para reportar cualquier incidencia.', scored:true, foco:true},
     {id:'m_5_6', num:'5.6', type:'scored2', t:'Se cuenta con Aviso de funcionamiento del establecimiento.', scored:true},
-    {id:'m_5_14', num:'5.14', type:'scored2', t:'Se cuenta con análisis de laboratorio (FQ y MQ) que incluya inspección de producto terminado, materias primas, superficies vivas e inertes. Se evidencian reportes acorde con lo establecido en la programación y se toman acciones en caso de desviación.', scored:true},
+    {id:'m_5_14', num:'5.14', type:'scored2', t:'El suministro de agua cuenta con sistema de purificación correctamente instalado, fijo a la pared, sin fugas y limpio. El agua que sale del filtro se percibe limpia.', scored:true},
   ],
   sec6: [
     {type:'subgroup', label:'🧹 Limpieza'},
-    {id:'m_6_1', num:'6.1', type:'scored2', t:'Cuenta con programas y registros de limpieza y desinfección de las instalaciones, equipos y utensilios.', scored:true},
-    {id:'m_6_8', num:'6.8', type:'scored2', t:'Las tuberías de drenaje y parte externa de trampa de grasa están libres de basura/restos de alimentos.', scored:true},
-    {id:'m_6_11', num:'6.11', type:'scored2', t:'Los equipos que resguardan alimentos o bebidas y los usados para su preparación, así como los utensilios y superficies en contacto con ellos, se lavan y desinfectan al finalizar las actividades donde fueron usados y/o en los cambios de turno. Los equipos desarmables se desarman para lavarse y desinfectarse.', scored:true},
-    {id:'m_6_12', num:'6.12', type:'scored2', t:'El lavado de menaje, contenedores, ollas, sartenes, piezas desmontables de equipos, etc. se realiza: escamochando, lavando pieza por pieza con agua y detergente, enjuagando con agua potable, desinfectando y dejando secar al aire.', scored:true},
-    {id:'m_6_13', num:'6.13', type:'scored2', t:'Los trapos y jergas se lavan y desinfectan frecuentemente. Los mechudos, escobas, recogedores, cubetas y herramientas de limpieza en general se mantienen limpias y en buen estado, tienen un uso específico y se almacenan en un lugar definido e identificado.', scored:true},
-    {id:'m_6_14', num:'6.14', type:'scored2', t:'Se cuenta con botes de aceite y grasa resguardados en una zona definida e identificada, así como comprobantes de recolección del tercero autorizado.', scored:true},
+    {id:'m_6_1', num:'6.1', type:'scored2', t:'Se cuenta con calendario de limpiezas diarias y profundas; éste se encuentra a la vista o de fácil acceso y está actualizado contemplando al personal activo en la plantilla.', scored:true, foco:true},
+    {id:'m_6_8', num:'6.8', type:'scored2', t:'La trampa de grasa se encuentra en buenas condiciones, instalada sobre una base firme y accesible para la limpieza, nivelada, de capacidad y materiales adecuados al igual que las tuberías que la conectan a la tarja y el desagüe. La salida está conectada al drenaje pluvial o colector general y no al drenaje sanitario. Se cuenta con comprobantes de vaciado con antigüedad no mayor a un mes.', scored:true},
+    {id:'m_6_11', num:'6.11', type:'scored2', t:'Los equipos calientes se encuentran limpios, sin acumulación de grasa, cochambre o residuos sólidos más allá de los generados durante el turno corriente.', scored:true, foco:true},
+    {id:'m_6_12', num:'6.12', type:'scored2', t:'El lavado de menaje, contenedores, ollas, sartenes, piezas desmontables de equipos, etc. se realiza: escamochando, lavando pieza por pieza con agua y detergente, enjuagando con agua potable, desinfectando y dejando secar al aire.', scored:true, foco:true},
+    {id:'m_6_13', num:'6.13', type:'scored2', t:'Los trapos y jergas se lavan y desinfectan frecuentemente. Los mechudos, escobas, recogedores, cubetas y herramientas de limpieza en general se mantienen limpias y en buen estado.', scored:true, foco:true},
+    {id:'m_6_14', num:'6.14', type:'scored2', t:'Se cuenta con botes de aceite y grasa resguardados en una zona definida e identificada, así como comprobantes de recolección del tercero autorizado.', scored:true, foco:true},
     {type:'subgroup', label:'🦟 Plagas'},
-    {id:'m_6_2', num:'6.2', type:'scored2', t:'Existen dispositivos en buenas condiciones y localizados adecuadamente para el control de insectos y roedores (cebos, trampas, etc.).', scored:true},
-    {id:'m_6_3', num:'6.3', type:'scored2', t:'En las áreas de proceso no hay evidencia de plagas o fauna nociva.', scored:true, autofail:true, afLabel:'🦟 Evidencia de Plagas'},
+    {id:'m_6_2', num:'6.2', type:'scored2', t:'Existen suficientes dispositivos en buenas condiciones y localizados adecuadamente para el control de insectos y roedores (cebos, trampas, etc.).', scored:true},
+    {id:'m_6_3', num:'6.3', type:'scored2', t:'En las áreas de proceso no hay evidencia de plagas o fauna nociva. El control de plagas implementado cumple con las normas correspondientes y no presenta ningún riesgo de contaminación para la operación.', scored:true, autofail:true, afLabel:'🦟 Evidencia de Plagas'},
     {id:'m_6_20', num:'6.20', type:'scored2', t:'Programa sobre los controles realizados para la erradicación de plagas; se cuenta con carpeta documental completa del proveedor: Licencia Sanitaria, plaguicidas autorizados con FT y HS, certificados de servicios realizados, calendario de visitas y rotación de químicos, contrato y seguro de responsabilidad civil vigentes, layout de ubicación de trampas.', scored:true},
     {type:'subgroup', label:'💧 Calidad de Agua'},
-    {id:'m_6_4', num:'6.4', type:'scored2', t:'Se practica alguna medida y/o método que garantice la potabilidad del agua. Se cuenta con instalaciones apropiadas para su almacenamiento y distribución; cisternas o tinacos están protegidos contra contaminación, corrosión y permanecen tapados.', scored:true},
-    {id:'m_6_5', num:'6.5', type:'scored2', t:'Comprobantes de limpieza y sanitización de tinacos y cisternas y comprobantes de servicio a sistema de purificación de agua.', scored:true},
-    {id:'m_6_10', num:'6.10', type:'scored2', t:'Se cuenta con kit de medición de cloro libre residual completo y en buen estado, que permita realizar mediciones confiables; se sabe utilizar correctamente. Cuenta con registros diarios del monitoreo de cloro residual libre.', scored:true},
+    {id:'m_6_4', num:'6.4', type:'scored2', t:'Se cuenta con el reporte impreso de análisis microbiológicos de agua de suministro y filtro, con antigüedad no mayor a 6 meses y con resultados favorables (Coliformes no detectables).', scored:true},
+    {id:'m_6_5', num:'6.5', type:'scored2', t:'Se cuenta con comprobantes de limpieza y sanitización de tinacos, cisternas y filtro de purificación de agua.', scored:true},
+    {id:'m_6_10', num:'6.10', type:'scored2', t:'Se cuenta con kit de medición de cloro libre residual completo y en buen estado, incluyendo la ayuda visual para su uso; se sabe utilizar correctamente. Cuenta con registros diarios actualizados del monitoreo de cloro residual libre con resultados favorables (mínimo 0.2 máximo 1.5 mg/L).', scored:true, foco:true},
     {type:'subgroup', label:'🗑️ Manejo de Residuos'},
-    {id:'m_6_6', num:'6.6', type:'scored2', t:'Los residuos generados durante la producción o elaboración se colocan en recipientes identificados, con bolsa y tapa, teniéndose a máximo 3/4 partes de capacidad.', scored:true},
-    {id:'m_6_7', num:'6.7', type:'scored2', t:'Área general de basura sin derrames excesivos, sin residuos expuestos, sin bolsas en el piso y/o rotas; los contenedores generales están identificados y tapados.', scored:true},
+    {id:'m_6_6', num:'6.6', type:'scored2', t:'Se cuenta con botes de basura suficientes con tapa y señalética de identificación para residuos inorgánicos, orgánicos y sanitarios. Los servicios de recolección de residuos son suficientemente frecuentes como para no observarse acumulaciones, o en su caso se cuenta con contenedores mayores al exterior de las instalaciones.', scored:true},
+    {id:'m_6_7', num:'6.7', type:'scored2', t:'Los botes de basura tienen bolsa, están tapados y no se observa acumulación de suciedad. El área de basuras y los contenedores están en buen estado, ordenados y sin acumulación de suciedad ni bolsas en el piso.', scored:true, foco:true},
     {type:'subgroup', label:'📝 Documentación y Plan de Acción'},
-    {id:'m_6_9', num:'6.9', type:'scored2', t:'Se documentó un plan de acción de las observaciones con respecto a la evaluación anterior; las acciones tomadas se cumplieron y fueron eficaces.', scored:true},
+    {id:'m_6_9', num:'6.9', type:'scored2', t:'Se tiene acceso al reporte de auditoría anterior y se registró plan de acción correspondiente.', scored:true, foco:true},
     {type:'subgroup', label:'⚗️ Manejo y Uso de Químicos'},
-    {id:'m_6_15', num:'6.15', type:'scored2', t:'Los agentes de limpieza y químicos en general se encuentran almacenados en un área específica, separada y delimitada de las áreas de almacenamiento y manipulación de materias primas y/o producto. Se resguardan cuidando la integridad del envase.', scored:true},
-    {id:'m_6_16', num:'6.16', type:'scored2', t:'Los productos químicos se usan de acuerdo con las diluciones autorizadas. Desinfectante de FRUVER y sanitizante de superficies se encuentran dentro del rango de uso permitido. Se cuenta con registro de las concentraciones respectivas.', scored:true},
-    {id:'m_6_17', num:'6.17', type:'scored2', t:'Los recipientes y envases vacíos que contuvieron cualquier sustancia química no son reutilizados para otro uso ni para almacenar alimentos o materia prima, y viceversa.', scored:true},
+    {id:'m_6_15', num:'6.15', type:'scored2', t:'Se cuenta con un área segura específica para el almacenamiento de químicos, delimitada y señalizada. Se tienen todas las ayudas visuales necesarias correspondientes al uso seguro y dosis.', scored:true},
+    {id:'m_6_16', num:'6.16', type:'scored2', t:'El personal de cocina conoce las diluciones autorizadas para todos los químicos que utilizan o ubica fácilmente las ayudas visuales correspondientes.', scored:true},
+    {id:'m_6_17', num:'6.17', type:'scored2', t:'Los químicos almacenados y utilizados en la cocina están estandarizados y tienen formulaciones y empaques seguros y conformes con la normativa aplicable.', scored:true},
     {id:'m_6_18', num:'6.18', type:'scored2', t:'Químicos disponibles se encuentran identificados, con caducidad vigente y correctamente tapados para evitar derrames; los colocados fuera de su envase original en aspersores, cubetas, retenes, se rotulan con nombre y concentración.', scored:true},
-    {id:'m_6_19', num:'6.19', type:'scored2', t:'Se cuenta con FT y HS de los químicos disponibles.', scored:true},
+    {id:'m_6_19', num:'6.19', type:'scored2', t:'Se cuenta con fichas técnicas y hojas de seguridad de los químicos disponibles.', scored:true},
   ],
 };
 
@@ -481,12 +484,13 @@ function buildRow(c, num, secKey) {
   w.id = 'wrap-' + c.id;
 
   const af    = c.autofail ? `<span class="af-tag">AUTOFAIL${c.afLabel ? ' · ' + c.afLabel : ''}</span>` : '';
+  const focoTag = c.foco ? '<span style="font-size:10px;color:#ca8a04;font-weight:700;margin-left:6px;">&#11088; Foodies</span>' : '';
 
   const btns = `<button class="sc-btn" data-v="2" onclick="setScore('${c.id}',2,'${secKey}')">✅ Sí</button><button class="sc-btn" data-v="0" onclick="setScore('${c.id}',0,'${secKey}')">🔴 No</button>`;
 
   const detail = `<div class="crit-detail" id="detail-${c.id}"><div class="detail-row"><label>Hallazgo</label><textarea placeholder="Describe el hallazgo…" id="hal-${c.id}" oninput="saveField('${c.id}')"></textarea></div><div class="detail-row"><label>Acción inmediata</label><textarea placeholder="¿Qué se corrigió durante la visita?" id="acc-${c.id}" oninput="saveField('${c.id}')"></textarea></div><div class="detail-row"><label>Acción C/M plazo</label><textarea placeholder="Acción correctiva a corto / mediano plazo" id="acc2-${c.id}" oninput="saveField('${c.id}')"></textarea></div><div class="detail-row"><label>Responsable</label><input type="text" placeholder="Nombre o puesto" id="res-${c.id}" oninput="saveField('${c.id}')"></div><div class="detail-row"><label>Fecha límite</label><input type="date" id="fec-${c.id}" oninput="saveField('${c.id}')"></div></div>`;
 
-  w.innerHTML = `<div class="crit-row"><div class="crit-num">${num}</div><div class="crit-body"><div style="font-size:10px;color:var(--gray-500);font-weight:600;">${c.num}</div><div class="crit-title">${c.t}${af}</div><div class="score-btns">${btns}</div></div><div class="crit-icon" id="icon-${c.id}">·</div></div>${detail}`;
+  w.innerHTML = `<div class="crit-row"><div class="crit-num">${num}</div><div class="crit-body"><div style="font-size:10px;color:var(--gray-500);font-weight:600;">${c.num}</div><div class="crit-title">${c.t}${af}${focoTag}</div><div class="score-btns">${btns}</div></div><div class="crit-icon" id="icon-${c.id}">·</div></div>${detail}`;
   return w;
 }
 
@@ -583,6 +587,24 @@ function semColor(pct) {
   return '#dc2626';
 }
 
+
+// -- FOODIES (FOCO) SCORE -------------------------------------------------
+function calcFocoScore() {
+  let earned = 0, possible = 0, evaluated = 0;
+  SECTION_META.forEach(m => {
+    DEFS[m.key].forEach(c => {
+      if (c.foco !== true || c.scored !== true) return;
+      const s = state[c.id];
+      if (!s || s.score === undefined) return;
+      evaluated++;
+      possible += 2;
+      earned += s.score;
+    });
+  });
+  const pct = possible > 0 ? parseFloat((earned / possible * 100).toFixed(2)) : null;
+  return { earned, possible, evaluated, pct };
+}
+
 function updateScores() {
   const results = {};
   SECTION_META.forEach(m => { results[m.key] = calcSection(m.key); });
@@ -618,6 +640,12 @@ function updateScores() {
   const rt   = document.getElementById('rs-total');     if (rt)  rt.textContent  = weighted.pct !== null ? weighted.pct.toFixed(2) + '%' : '—';
   const rts  = document.getElementById('rs-total-sem'); if (rts) rts.innerHTML   = `<span class="semaforo ${tsem.cls}">${tsem.lbl}</span>`;
   const rttp = document.getElementById('rs-total-pts'); if (rttp) rttp.textContent = weighted.pct !== null ? weighted.pct.toFixed(2) + '% ponderado' : '—';
+  // Foodies card
+  const foco = calcFocoScore();
+  const rfi  = document.getElementById('rs-foodies');     if (rfi)  rfi.textContent  = foco.pct !== null ? foco.pct.toFixed(2) + '%' : '—';
+  const rfp  = document.getElementById('rs-foodies-pts'); if (rfp)  rfp.textContent  = foco.possible > 0 ? foco.earned + ' / ' + foco.possible + ' pts' : '—';
+  const rfsem = semaforo(foco.pct, false);
+  const rfs  = document.getElementById('rs-foodies-sem'); if (rfs) rfs.innerHTML = `<span class="semaforo ${rfsem.cls}">${rfsem.lbl}</span>`;
 }
 
 // ─── UI HELPERS ──────────────────────────────────────────────────────────────
@@ -712,17 +740,20 @@ async function exportTrackerRowCore() {
 
   // Sheet 1: Registro
   const wsReg = wb.addWorksheet('Registro');
-  wsReg.columns = [{width:4},{width:20},{width:12},{width:14},{width:16},{width:12},{width:12},{width:12},{width:12},{width:12},{width:12},{width:12},{width:16},{width:16},{width:18}];
-  const regHdr = wsReg.addRow(['#','Cocina','Ciudad','Fecha Visita','Auditor','Trimestre','S1 (%)','S2 (%)','S3 (%)','S4 (%)','S5 (%)','S6 (%)','Total Ponderado (%)','Semáforo','Autofail']);
+  wsReg.columns = [{width:4},{width:20},{width:12},{width:14},{width:16},{width:12},{width:12},{width:12},{width:12},{width:12},{width:12},{width:12},{width:16},{width:16},{width:18},{width:14},{width:18}];
+  const regHdr = wsReg.addRow(['#','Cocina','Ciudad','Fecha Visita','Auditor','Trimestre','S1 (%)','S2 (%)','S3 (%)','S4 (%)','S5 (%)','S6 (%)','Total Ponderado (%)','Semáforo','Autofail','⭐ Foodies (%)','Semáforo Foodies']);
   styleHdr(regHdr);
   const secPcts = SECTION_META.map(m => results[m.key].pct !== null ? results[m.key].pct / 100 : null);
+  const focoExp = calcFocoScore();
   const regData = wsReg.addRow([null,meta.cocina||'',meta.ciudad||'',meta.fecha||'',meta.auditor||'',meta.trimestre||'',
     secPcts[0],secPcts[1],secPcts[2],secPcts[3],secPcts[4],secPcts[5],
     weighted.pct !== null ? weighted.pct / 100 : null,
-    semLabel(weighted.pct, anyAF), afValue
+    semLabel(weighted.pct, anyAF), afValue,
+    focoExp.pct !== null ? focoExp.pct / 100 : null,
+    semLabel(focoExp.pct, false)
   ]);
   styleData(regData);
-  [7,8,9,10,11,12,13].forEach(i => { const c = regData.getCell(i); if (c.value !== null && c.value !== undefined) c.numFmt = '0%'; });
+  [7,8,9,10,11,12,13,16].forEach(i => { const c = regData.getCell(i); if (c.value !== null && c.value !== undefined) c.numFmt = '0%'; });
   wsReg.views = [{state:'frozen',ySplit:1}];
 
   // Sheet 2: Hallazgos
