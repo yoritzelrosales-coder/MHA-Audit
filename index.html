@@ -209,8 +209,12 @@ main{max-width:860px;margin:0 auto;padding:20px 16px 96px;}
 <body>
 <header class="app-header">
   <div class="logo">🧼 Foodology · MHA<span>Evaluación Sanitaria — Higiene y Sanidad · v.06/07/2026</span></div>
-  <div class="global-pill"><div class="pct" id="g-pct">—</div><div class="lbl" id="g-pts" style="font-size:10px;opacity:.65;margin-top:1px;">— pts pond.</div><div class="lbl" id="g-sem">Sin evaluar</div></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span id="autosave-badge" style="font-size:11px;color:#9ca3af;padding:4px 10px;background:#f3f4f6;border-radius:20px;white-space:nowrap;"></span>
+    <div class="global-pill"><div class="pct" id="g-pct">—</div><div class="lbl" id="g-pts" style="font-size:10px;opacity:.65;margin-top:1px;">— pts pond.</div><div class="lbl" id="g-sem">Sin evaluar</div></div>
+  </div>
 </header>
+<div id="recovery-banner" style="display:none;background:#fef9c3;border-left:4px solid #f59e0b;padding:10px 16px;font-size:13px;color:#78350f;"></div>
 <main>
 <!-- DATOS DE LA VISITA -->
 <div class="card">
@@ -322,6 +326,7 @@ main{max-width:860px;margin:0 auto;padding:20px 16px 96px;}
 <div class="bottom-bar">
   <button class="btn btn-outline" style="color:#dc2626;border-color:#fca5a5;" onclick="resetForm()">🔄 Nueva evaluación</button>
   <button class="btn btn-outline" onclick="saveJSON()">💾 Guardar borrador</button>
+  <button class="btn btn-outline" onclick="if(confirm('¿Eliminar el borrador guardado en este dispositivo?')){clearStoredDraft();}" style="font-size:12px;opacity:.7;">🗑 Limpiar borrador</button>
   <button class="btn btn-outline" style="background:#f0fdf4;border-color:#bbf7d0;color:#15803d;" onclick="exportTrackerRow()">📥 Descargar fila para tracker</button>
   <button class="btn btn-primary" onclick="openReport()">📄 Ver reporte final</button>
 </div>
@@ -453,6 +458,90 @@ const DEFS = {
 
 const state = {};
 
+// ─── AUTO-SAVE (localStorage) ─────────────────────────────────────────────────
+const STORAGE_KEY = 'mha_autosave_v2';
+
+function persistToStorage() {
+  try {
+    const obs = {
+      fortalezas: (document.getElementById('obs-fortalezas')||{}).value || '',
+      riesgos:    (document.getElementById('obs-riesgos')||{}).value    || '',
+      acuerdos:   (document.getElementById('obs-acuerdos')||{}).value   || ''
+    };
+    const meta = {};
+    ['m-cocina','m-ciudad','m-fecha','m-trimestre','m-auditor'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) meta[id] = el.value;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state, meta, obs, ts: Date.now() }));
+    _updateSaveBadge();
+  } catch(e) {}
+}
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    const ageMin = (Date.now() - (saved.ts||0)) / 60000;
+    // Restore meta fields
+    if (saved.meta) {
+      Object.entries(saved.meta).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el && val) { el.value = val; el.dispatchEvent(new Event('change')); }
+      });
+    }
+    // Restore state scores + details
+    if (saved.state) {
+      Object.entries(saved.state).forEach(([id, s]) => {
+        state[id] = s;
+        if (s.score !== undefined) updateRowUI(id, s.score);
+        restoreRow(id);
+      });
+    }
+    // Restore obs
+    if (saved.obs) {
+      ['fortalezas','riesgos','acuerdos'].forEach(k => {
+        const el = document.getElementById('obs-' + k);
+        if (el && saved.obs[k]) el.value = saved.obs[k];
+      });
+    }
+    // Show recovery banner if saved data exists
+    _showRecoveryBanner(ageMin, saved.meta && saved.meta['m-cocina']);
+  } catch(e) {}
+}
+
+function clearStoredDraft() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  const badge = document.getElementById('autosave-badge');
+  if (badge) badge.textContent = 'Borrador eliminado';
+}
+
+function _updateSaveBadge() {
+  const badge = document.getElementById('autosave-badge');
+  if (!badge) return;
+  const now = new Date();
+  const hm  = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0') + ':' + now.getSeconds().toString().padStart(2,'0');
+  badge.textContent = '✓ Auto-guardado ' + hm;
+  badge.style.color = '#16a34a';
+}
+
+function _showRecoveryBanner(ageMin, cocina) {
+  const banner = document.getElementById('recovery-banner');
+  if (!banner) return;
+  if (ageMin < 60*24*7) { // show if saved within 7 days
+    const h = Math.floor(ageMin/60);
+    const m = Math.round(ageMin%60);
+    const ago = h > 0 ? `hace ${h}h ${m}min` : `hace ${m} min`;
+    const cocinaLabel = cocina ? ` — cocina: <strong>${cocina}</strong>` : '';
+    banner.innerHTML = `⚡ Se encontró un borrador guardado (${ago}${cocinaLabel}). Los datos han sido restaurados. <button onclick="clearStoredDraft();this.parentElement.style.display='none'" style="margin-left:12px;background:#dc2626;color:#fff;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px">Descartar borrador</button>`;
+    banner.style.display = 'block';
+  }
+}
+
+// Auto-save every 15 seconds
+setInterval(persistToStorage, 15000);
+
 // ─── RENDER ──────────────────────────────────────────────────────────────────
 function renderBlock(secKey) {
   const container = document.getElementById('crit-' + secKey);
@@ -500,6 +589,7 @@ function setScore(id, score, secKey) {
   state[id].score = score;
   updateRowUI(id, score);
   updateScores();
+  persistToStorage();
 }
 
 function updateRowUI(id, score) {
@@ -527,6 +617,7 @@ function saveField(id) {
   if (a2) state[id].accion2   = a2.value;
   if (r)  state[id].resp      = r.value;
   if (f)  state[id].fechalim  = f.value;
+  persistToStorage();
 }
 
 function restoreRow(id) {
@@ -690,6 +781,7 @@ function saveJSON() {
   a.href = URL.createObjectURL(blob);
   a.download = `MHA_${(meta.cocina||'cocina').replace(/\s+/g,'-')}_${meta.fecha||new Date().toISOString().split('T')[0]}.json`;
   a.click();
+  clearStoredDraft();
 }
 
 function exportTrackerRow() {
@@ -833,6 +925,7 @@ async function exportTrackerRowCore() {
   const a = document.createElement('a');
   a.href = url; a.download = `MHA_${(meta.cocina||'cocina').replace(/\s+/g,'-')}_${meta.fecha||new Date().toISOString().split('T')[0]}.xlsx`;
   a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  clearStoredDraft();
 }
 
 // ─── REPORT ──────────────────────────────────────────────────────────────────
@@ -1007,6 +1100,7 @@ function printReport() {
 // ─── RESET ───────────────────────────────────────────────────────────────────
 function resetForm() {
   if (!confirm('¿Iniciar una nueva evaluación? Se borrarán todos los datos actuales.')) return;
+  clearStoredDraft();
   Object.keys(state).forEach(k => delete state[k]);
   document.getElementById('m-cocina').selectedIndex = 0;
   document.getElementById('m-ciudad').value = '';
@@ -1072,6 +1166,20 @@ function autoFillCiudad() {
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 SECTION_META.forEach(m => renderBlock(m.key));
 document.getElementById('m-fecha').value = new Date().toISOString().split('T')[0];
+
+// Persist on meta field changes
+['m-cocina','m-ciudad','m-fecha','m-trimestre','m-auditor'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', persistToStorage);
+});
+// Persist on obs textarea changes
+['obs-fortalezas','obs-riesgos','obs-acuerdos'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', persistToStorage);
+});
+
+// Restore saved draft (after render so elements exist)
+loadFromStorage();
 </script>
 </body>
 </html>
